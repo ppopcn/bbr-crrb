@@ -5,24 +5,24 @@ export PATH
 
 [ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 
-echo "选择你的要安装的版本，列表如下"
-echo "1: Yankee_bbr_powered"
-echo "2: Nanqinlang_bbr_powered"
-echo "请在下方空白处输入编号数字并回车以确认："
-echo "或者ctrl+c退出"
-read CBBR
-if [ $CBBR = 1 ]
-then
-wget -O ./tcp_bbr_powered.c https://gist.github.com/anonymous/ba338038e799eafbba173215153a7f3a/raw/55ff1e45c97b46f12261e07ca07633a9922ad55d/tcp_tsunami.c
-sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
-elif [ $CBBR = 2 ]
-then
+# echo "选择你的要安装的版本，列表如下"
+# echo "1: Yankee_bbr_powered"
+# echo "2: Nanqinlang_bbr_powered"
+# echo "请在下方空白处输入编号数字并回车以确认："
+# echo "或者ctrl+c退出"
+# read CBBR
+# if [ $CBBR = 1 ]
+# then
+# wget -O ./tcp_bbr_powered.c https://gist.github.com/anonymous/ba338038e799eafbba173215153a7f3a/raw/55ff1e45c97b46f12261e07ca07633a9922ad55d/tcp_tsunami.c
+# sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
+# elif [ $CBBR = 2 ]
+# then
 wget -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang.c
 sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
-else
-    echo "错误！请输入正确编号再重试"
-    exit 0
-fi
+# else
+#     echo "错误！请输入正确编号再重试"
+#     exit 0
+# fi
 
 KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
 [ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el6.elrepo.x86_64)" ] && echo "Install error." && exit 1
@@ -34,10 +34,10 @@ done
 yum remove kernel-headers -y
 # yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el6/x86_64/RPMS/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
 # yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el6/x86_64/RPMS/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/xratzh/CBBR/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
-yum install make gcc -y
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
+yum install make gcc gcc-c++ -y
 
 echo 'obj-m:=tcp_bbr_powered.o' >./Makefile
 make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=`which gcc`
