@@ -17,7 +17,7 @@ export PATH
 # sed -i "s/tsunami/bbr_powered/g" tcp_bbr_powered.c
 # elif [ $CBBR = 2 ]
 # then
-wget -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang.c
+wget --no-check-certificate -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang.c
 sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
 # else
 #     echo "错误！请输入正确编号再重试"
@@ -34,9 +34,19 @@ done
 yum remove kernel-headers -y
 # yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el6/x86_64/RPMS/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
 # yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el6/x86_64/RPMS/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
-yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
+#yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
+#yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
+#yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
+wget --no-check-certificate -O kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
+wget --no-check-certificate -O kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
+wget --no-check-certificate -O kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
+rpm -ivh kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
+rpm -ivh kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
+rpm -ivh kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
+
+
+
+
 yum install make gcc gcc-c++ -y
 
 echo 'obj-m:=tcp_bbr_powered.o' >./Makefile
