@@ -66,6 +66,13 @@ lsmod |grep -q 'bbr_powered'
 [ $? -eq '0' ] && {
 sysctl -p >/dev/null 2>&1
 echo "Finish! "
+lsmod | grep bbr
+printf \\a
+sleep 1
+printf \\a
+sleep 1
+printf \\a
+sleep 1
 exit 0
 } || {
 echo "Error, Loading BBR POWERED."
@@ -74,11 +81,4 @@ exit 1
 
 sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf   # 防止内核由于update产生变动
 
-lsmod | grep bbr
 
-printf \\a
-sleep 1
-printf \\a
-sleep 1
-printf \\a
-sleep 1
