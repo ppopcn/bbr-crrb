@@ -75,3 +75,10 @@ exit 1
 sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf   # 防止内核由于update产生变动
 
 lsmod | grep bbr
+
+printf \\a
+sleep 1
+printf \\a
+sleep 1
+printf \\a
+sleep 1
