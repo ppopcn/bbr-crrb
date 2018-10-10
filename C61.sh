@@ -17,6 +17,11 @@ if [ ! -f "/boot/grub/grub.conf" ]; then
 fi
 sed -i 's/^default=1/default=0/g' /boot/grub/grub.conf
 cat /boot/grub/grub.conf 
+printf \\a
+sleep 1
+printf \\a
+sleep 1
+printf \\a
 echo
 read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]" is_reboot
 if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then

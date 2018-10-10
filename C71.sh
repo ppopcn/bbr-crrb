@@ -11,6 +11,11 @@ rpm -ivh kernel-ml-4.11.8-1.el7.elrepo.x86_64.rpm
 yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-4.11.8-1.el7.elrepo.x86_64.rpm
 
 grub2-set-default 0
+printf \\a
+sleep 1
+printf \\a
+sleep 1
+printf \\a
 echo
 read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]" is_reboot
 if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then

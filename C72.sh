@@ -72,6 +72,11 @@ lsmod |grep -q 'bbr_powered'
 [ $? -eq '0' ] && {
 sysctl -p >/dev/null 2>&1
 echo "Finish! "
+printf \\a
+sleep 1
+printf \\a
+sleep 1
+printf \\a
 exit 0
 } || {
 echo "Error, Loading BBR POWERED."
