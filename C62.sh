@@ -44,7 +44,9 @@ rpm -ivh kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
 
-
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-devel-4.11.8-1.el6.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-firmware-4.11.8-1.el6.elrepo.noarch.rpm
 
 
 yum install make gcc gcc-c++ -y
