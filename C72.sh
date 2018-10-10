@@ -53,7 +53,7 @@ yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/
 yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-tools-libs-4.11.8-1.el7.elrepo.x86_64.rpm
 yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-tools-4.11.8-1.el7.elrepo.x86_64.rpm
 sleep 1
-yum install make gcc -y
+yum install make gcc gcc-c++ perl -y
 
 echo 'obj-m:=tcp_bbr_powered.o' >./Makefile
 make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=`which gcc`
