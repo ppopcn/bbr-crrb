@@ -9,7 +9,7 @@ export PATH
 cd /tmp
 wget --no-check-certificate -O kernel-ml-4.11.8-1.el6.elrepo.x86_64.rpm https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-4.11.8-1.el6.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-4.11.8-1.el6.elrepo.x86_64.rpm
-# yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-4.11.8-1.el6.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel6/kernel-ml-4.11.8-1.el6.elrepo.x86_64.rpm
 
 if [ ! -f "/boot/grub/grub.conf" ]; then
   echo -e "${red}Error:${plain} /boot/grub/grub.conf not found, please check it."
