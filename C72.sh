@@ -48,7 +48,10 @@ rpm -ivh kernel-ml-headers-4.11.8-1.el7.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-devel-4.11.8-1.el7.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-tools-libs-4.11.8-1.el7.elrepo.x86_64.rpm
 rpm -ivh kernel-ml-tools-4.11.8-1.el7.elrepo.x86_64.rpm
-
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-headers-4.11.8-1.el7.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-devel-4.11.8-1.el7.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-tools-libs-4.11.8-1.el7.elrepo.x86_64.rpm
+yum install -y https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/kernel7/kernel-ml-tools-4.11.8-1.el7.elrepo.x86_64.rpm
 sleep 1
 yum install make gcc -y
 
