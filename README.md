@@ -69,7 +69,7 @@ wget --no-check-certificate -O C62.sh https://raw.githubusercontent.com/xratzh/C
 ```
 
 ### Tips
-- **存在对于其他内核的删除，只保留4.11.8内核的行为**
+- **存在对于其他内核的删除，只保留4.11.8内核的行为**`
 - **为什么不能一键**，因为Linux内核在4.0后支持不重启更换，但是CentOS和Debian/Ubuntu很多的内核都是4.0-的版本，Debian9和Ubuntu16.04则是4.0+的版本。
 - Xratzh压力测试，发现bbr和魔改bbr都开启时会达到最快（个人验证），本脚本默认两者都开启。
 - 脚本里加入了对内核的锁定，之后update时不会变动内核。内核统一选择4.11.8版本。
