@@ -15,4 +15,3 @@ if [ $v -eq 7 ]; then
 yum install -y wget && wget --no-check-certificate -O C71.sh https://raw.githubusercontent.com/ppopcn/bbr-crrb/master/C71.sh && bash C71.sh
  
 fi
-
