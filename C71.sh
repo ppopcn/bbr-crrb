@@ -17,7 +17,7 @@ printf \\a
 sleep 1
 printf \\a
 echo
-read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]" is_reboot
+read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]y" is_reboot
 if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then
     reboot
 else
