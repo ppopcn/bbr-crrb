@@ -5,11 +5,11 @@ export PATH
 
 [ "$EUID" -ne '0' ] && echo "Error,This script must be run as root! " && exit 1
 
-# echo "é€‰æ‹©ä½ çš„è¦å®‰è£…çš„ç‰ˆæœ¬ï¼Œåˆ—è¡¨å¦‚ä¸‹"
+# echo "Ñ¡ÔñÄãµÄÒª°²×°µÄ°æ±¾£¬ÁĞ±íÈçÏÂ"
 # echo "1: Yankee_bbr_powered"
 # echo "2: Nanqinlang_bbr_powered"
-# echo "è¯·åœ¨ä¸‹æ–¹ç©ºç™½å¤„è¾“å…¥ç¼–å·æ•°å­—å¹¶å›è½¦ä»¥ç¡®è®¤ï¼š"
-# echo "æˆ–è€…ctrl+cé€€å‡º"
+# echo "ÇëÔÚÏÂ·½¿Õ°×´¦ÊäÈë±àºÅÊı×Ö²¢»Ø³µÒÔÈ·ÈÏ£º"
+# echo "»òÕßctrl+cÍË³ö"
 # read CBBR
 # if [ $CBBR = 1 ]
 # then
@@ -20,7 +20,7 @@ export PATH
 wget --no-check-certificate -O ./tcp_bbr_powered.c https://raw.githubusercontent.com/nanqinlang/tcp_nanqinlang-test/master/tcp_nanqinlang.c
 sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
 # else
-#     echo "é”™è¯¯ï¼è¯·è¾“å…¥æ­£ç¡®ç¼–å·å†é‡è¯•"
+#     echo "´íÎó£¡ÇëÊäÈëÕıÈ·±àºÅÔÙÖØÊÔ"
 #     exit 0
 # fi
 
@@ -56,7 +56,7 @@ make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=`which gcc`
 chmod +x ./tcp_bbr_powered.ko
 cp -rf ./tcp_bbr_powered.ko /lib/modules/$(uname -r)/kernel/net/ipv4
 
-# æ’å…¥å†…æ ¸æ¨¡å—
+# ²åÈëÄÚºËÄ£¿é
 insmod tcp_bbr_powered.ko
 depmod -a
 sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
@@ -72,6 +72,7 @@ lsmod | grep bbr
 printf \\a
 sleep 1
 printf \\a
+cp /lib/firmware/bnx2/bnx2-mips-09-6.2.1a.fw /lib/firmware/bnx2/bnx2-mips-09-6.2.1b.fw
 sleep 1
 printf \\a
 sleep 1
@@ -81,6 +82,6 @@ echo "Error, Loading BBR POWERED."
 exit 1
 }
 
-sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf   # é˜²æ­¢å†…æ ¸ç”±äºupdateäº§ç”Ÿå˜åŠ¨
+sed -i '/\[main]/a\exclude=kernel*' /etc/yum.conf   # ·ÀÖ¹ÄÚºËÓÉÓÚupdate²úÉú±ä¶¯
 
 
