@@ -24,12 +24,12 @@ sed -i "s/nanqinlang/bbr_powered/g" tcp_bbr_powered.c
 #     exit 0
 # fi
 
-KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
-[ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el6.elrepo.x86_64)" ] && echo "Install error." && exit 1
-for KernelTMP in `echo "$KernelList"`
- do
-  [ "$KernelTMP" != "kernel-ml-4.11.8-1.el6.elrepo.x86_64" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && yum remove "$KernelTMP" -y >/dev/null 2>&1
-done
+#KernelList="$(rpm -qa |grep 'kernel' |awk '{print $1}')"
+#[ -z "$(echo $KernelList |grep -o kernel-ml-4.11.8-1.el6.elrepo.x86_64)" ] && echo "Install error." && exit 1
+#for KernelTMP in `echo "$KernelList"`
+# do
+#  [ "$KernelTMP" != "kernel-ml-4.11.8-1.el6.elrepo.x86_64" ] && echo -ne "Uninstall Old Kernel\n\t$KernelTMP\n" && yum remove "$KernelTMP" -y >/dev/null 2>&1
+#done
 
 yum remove kernel-headers -y
 # yum install -y http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el6/x86_64/RPMS/kernel-ml-headers-4.11.8-1.el6.elrepo.x86_64.rpm
